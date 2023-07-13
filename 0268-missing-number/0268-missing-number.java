@@ -9,10 +9,7 @@ class Solution {
         }
         int k=0;
         int sum2=0;
-        for(i=0;i<=n;i++)
-        {
-         sum2=sum2+i;
-        }
+        sum2=(n*(n+1)/2);
             return sum2-sum1;
     }
 }
