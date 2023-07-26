@@ -2,6 +2,9 @@ import java.lang.*;
 
 class Solution {
     public int minSpeedOnTime(int[] dist, double hour) {
+        if(dist.length > Math.ceil(hour)) {
+            return -1;
+        }
         int left = 1, right = 10000000;
         int temp=-1;
 
