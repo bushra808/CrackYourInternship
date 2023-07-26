@@ -1,32 +1,19 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
+        int res[]=new int[2];
         int n=numbers.length;
-        int pos=0;
-        int i=0;
-        for(i=0;i<n;i++)
+        int k=0;
+        HashMap<Integer,Integer>h=new HashMap<Integer,Integer>();
+        for(int i=0;i<n;i++)
         {
-            pos=BinarySearch(numbers, target-numbers[i], i);
-            if(pos!=-2)
-            break;
-        }
-        return new int[]{i+1,pos+1};
-    }
-    public int BinarySearch(int[] A, int num, int j)
-    {
-        int left=0, right=A.length-1;
-        int mid=0; int ans=-2;
-        while(left<=right)
-        {
-            mid=left+(right-left)/2;
-            if(A[mid]==num && mid!=j)
+            if(h.containsKey(target-numbers[i]))
             {
-                ans=mid;
-                break; }
-            else if(A[mid]>num)
-            right=mid-1;
-            else
-            left=mid+1;
+                res[0]=h.get(target-numbers[i])+1;
+                res[1]=i+1;
+                break;
+            }
+            h.put(numbers[i],i);
         }
-        return ans;
+        return res;
     }
 }
