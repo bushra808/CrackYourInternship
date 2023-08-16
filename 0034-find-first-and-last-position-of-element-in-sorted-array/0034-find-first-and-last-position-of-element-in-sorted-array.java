@@ -1,28 +1,45 @@
-class Solution {
-    public int[] searchRange(int[] nums, int target) {
-        int n=nums.length;
-        int res[]=new int[2];
-        res[0]=-1;
-        res[1]=-1;
-        
-        
-        int p=0;
-        for(int i=0;i<n;i++)
-        {
-            if(nums[i]==target)
-            {
-                if(p==0)
-                {
-                res[p]=i;
-                res[p+1]=i;
-                p++;
-                }
-                else if(p==1)
-                {
-                res[p]=i;
-                }
-            }
+        /*binary search
+        {1,2,2,2,3,3,4,5,5,5,5,7}
+        first bs---^     ^
+        second bs--------^*/
+
+public class Solution {
+public int[] searchRange(int[] nums, int target) {
+    int[] result = new int[2];
+    result[0] = findFirst(nums, target);
+    result[1] = findLast(nums, target);
+    return result;
+}
+
+private int findFirst(int[] nums, int target){
+    int idx = -1;
+    int start = 0;
+    int end = nums.length - 1;
+    while(start <= end){
+        int mid = (start + end) / 2;
+        if(nums[mid] >= target){
+            end = mid - 1;
+        }else{
+            start = mid + 1;
         }
-        return res;
+        if(nums[mid] == target) idx = mid;
     }
+    return idx;
+}
+
+private int findLast(int[] nums, int target){
+    int idx = -1;
+    int start = 0;
+    int end = nums.length - 1;
+    while(start <= end){
+        int mid = (start + end) / 2;
+        if(nums[mid] <= target){
+            start = mid + 1;
+        }else{
+            end = mid - 1;
+        }
+        if(nums[mid] == target) idx = mid;
+    }
+    return idx;
+}
 }
