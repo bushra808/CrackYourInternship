@@ -20,9 +20,9 @@ class Solution {
             length++;
         }
 
-        while(k>=length)
+        if(k>=length)
         {
-            k=k-length;
+            k=k%length;
         }
 
          if (k == 0) {
