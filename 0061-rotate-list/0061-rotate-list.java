@@ -25,7 +25,7 @@ class Solution {
             k=k-length;
         }
 
-         if (head == null || head.next == null || k == 0) {
+         if (k == 0) {
             return head;
         }
 
