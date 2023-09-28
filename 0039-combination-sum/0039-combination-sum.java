@@ -17,10 +17,10 @@ class Solution {
 
         // Include the current candidate
         currComb.add(candidates[startIndex]);
-        findCombinations(candidates, startIndex, target - candidates[startIndex], sum, currComb);
+        findCombinations(candidates, startIndex, target - candidates[startIndex], sum, currComb); //not incrementing startIndex because a candidate can be used multiple times
         currComb.remove(currComb.size() - 1);
 
         // Exclude the current candidate and move to the next
-        findCombinations(candidates, startIndex + 1, target, sum, currComb);
+        findCombinations(candidates, startIndex + 1, target, sum, currComb); //inc startIndex (i) to include new values after removing previously added candidate.
     }
 }
